@@ -1,0 +1,232 @@
+/* =========================
+   Base + Variables
+========================= */
+:root{
+  --bg: #0b1220;
+  --card: #0f1a33;
+  --card2: #0c152b;
+  --text: #e7ecff;
+  --muted: #b8c2ff;
+  --line: rgba(255,255,255,0.10);
+  --accent: #7aa2ff;
+  --accent2: #2de2e6;
+}
+
+*{ box-sizing: border-box; }
+
+html, body{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background:
+    radial-gradient(1100px 500px at 15% 10%, rgba(122,162,255,0.25), transparent 55%),
+    radial-gradient(900px 420px at 90% 15%, rgba(45,226,230,0.18), transparent 55%),
+    var(--bg);
+  color: var(--text);
+  line-height: 1.55;
+}
+
+/* Make the whole page breathe */
+header, main, footer{
+  width: 100%;
+  max-width: 980px;          /* mobile-friendly + clean */
+  margin: 0 auto;
+  padding: 18px 16px;
+}
+
+/* =========================
+   Header
+========================= */
+header{
+  border-bottom: 1px solid var(--line);
+}
+
+header h1{
+  margin: 0 0 6px;
+  font-size: 1.9rem;
+  letter-spacing: 0.2px;
+}
+
+header p{
+  margin: 0 0 12px;
+  color: var(--muted);
+}
+
+a{
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+a:hover{
+  color: var(--accent2);
+  border-bottom-color: var(--accent2);
+}
+
+/* Nav */
+nav ul{
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+nav a{
+  display: inline-block;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.04);
+}
+
+nav a:hover{
+  background: rgba(45,226,230,0.10);
+  border-color: rgba(45,226,230,0.35);
+}
+
+/* =========================
+   Main cards
+========================= */
+main{
+  display: block; /* mobile default */
+}
+
+section, article{
+  background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 14px 14px;
+  margin: 12px 0;
+}
+
+h2{
+  margin: 0 0 10px;
+  font-size: 1.25rem;
+}
+
+h3{
+  margin: 0 0 6px;
+  font-size: 1.05rem;
+}
+
+ul{
+  margin: 8px 0 0 18px;
+}
+
+li{ margin: 6px 0; }
+
+article{
+  background: rgba(15, 26, 51, 0.65);
+}
+
+figure{
+  margin: 0;
+}
+
+img{
+  max-width: 100%;
+  height: auto;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  display: block;
+}
+
+figcaption{
+  color: var(--muted);
+  margin-top: 8px;
+  font-size: 0.95rem;
+}
+
+/* Footer */
+footer{
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+  text-align: center;
+}
+
+/* =========================
+   Resume Layout Helpers
+========================= */
+.resume-layout{
+  display: block; /* mobile stacks */
+}
+
+.sidebar, .content{
+  display: block;
+}
+
+/* =========================
+   Desktop layout (different from mobile)
+   Checked at 1920px wide (will apply much earlier too)
+========================= */
+@media (min-width: 900px){
+  header, main, footer{
+    max-width: 1180px;
+    padding: 26px 22px;
+  }
+
+  header{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+    align-items: end;
+  }
+
+  header h1{
+    font-size: 2.35rem;
+  }
+
+  header p{
+    margin: 0;
+    text-align: right;
+    align-self: center;
+  }
+
+  nav{
+    grid-column: 1 / -1;
+  }
+
+  /* Real “different layout”: two-column resume on desktop */
+  .resume-layout{
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 14px;
+    align-items: start;
+  }
+
+  .sidebar{
+    position: sticky;
+    top: 18px;
+    align-self: start;
+  }
+
+  .sidebar section{
+    margin-top: 0;
+  }
+
+  .content section{
+    margin-top: 0;
+  }
+}
+
+/* =========================
+   Extra polish for very large screens (like 1920px)
+========================= */
+@media (min-width: 1600px){
+  header, main, footer{
+    max-width: 1320px;
+  }
+
+  body{
+    font-size: 18px;
+  }
+
+  header h1{
+    font-size: 2.6rem;
+  }
+}
